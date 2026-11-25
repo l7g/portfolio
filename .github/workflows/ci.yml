@@ -1,0 +1,21 @@
+name: CI # name on GITHUB
+
+on: # when it triggers
+  pull_request: # every pr
+  push:
+    branches: [main] # and every push to main
+
+jobs:
+  check: #a job is a VM
+    runs-on: ubuntu-latest # linux is free for public repos
+    steps:
+      - uses: actions/checkout@v5 #download the code
+      - uses: pnpm/action-setup@v4 #install pnpm
+      - uses: actions/setup-node@v5 #install Node
+        with:
+          node-version: 22
+          cache: pnpm # use chached packages between runs
+      - run: pnpm install --frozen-lockfile #install the lockfile
+      - run: pnpm lint # three checks
+      - run: pnpm typecheck
+      - run: pnpm build
