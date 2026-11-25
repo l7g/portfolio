@@ -2,5 +2,8 @@
   "name": "@portfolio/typescript-config",
   "version": "0.1.0",
   "private": true,
-  "files": ["base.json", "tsconfig.json"]
+  "files": [
+    "base.json",
+    "nextjs.json"
+  ]
 }
