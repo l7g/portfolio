@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: PageProps<"/[lang]">): Promise<Metadata> {
-  const lang = await (await params).lang;
+  const { lang } = await params;
   if (!hasLocale(lang)) {
     notFound();
   }
@@ -14,11 +14,12 @@ export async function generateMetadata({
   return {
     title: dict.metadata.title,
     description: dict.metadata.description,
+    alternates: { languages: { en: "/en", it: "/it" } },
   };
 }
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
-  const lang = await (await params).lang;
+  const { lang } = await params;
   if (!hasLocale(lang)) {
     notFound();
   }
