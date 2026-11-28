@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { hasLocale, Locales } from "./dictionaries";
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -22,7 +21,7 @@ export default async function RootLayout({
   children,
   params,
 }: LayoutProps<"/[lang]">) {
-  const lang = await (await params).lang;
+  const { lang } = await params;
   if (!hasLocale(lang)) {
     notFound();
   }
