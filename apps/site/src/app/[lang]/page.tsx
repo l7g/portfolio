@@ -37,7 +37,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <p className="mt-4 text-lg">{dict.metadata.description}</p>
         <Link
           href={lang === "en" ? "/it" : "/en"}
-          hrefLang={lang === "en" ? "en" : "it"}
+          hrefLang={lang === "en" ? "it" : "en"}
           className="mt-8 inline-block text-lg font-bold"
         >
           {lang === "en" ? "Italiano" : "English"}
